@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aplicación de Notas</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!--<link rel="manifest" href="manifest.json">-->
+</head>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('serviceworker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Error al registrar el Service Worker:', error);
+                });
+        });
+    }
+</script>
+
+<script type="module" src="app.js" ></script>
+<script type="module" src="serviceworker.js" ></script>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><img src="imgs/quill-drawing-a-line.png" id="boton2"></img></li>
+                <li><img src="imgs/travel-journal.png"  id="boton1" ></img></li>
+                <li><img src="imgs/heart.png"  id="boton3"></img></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1>Journalistic AppDCC</h1>
+            <div class="note-editor" id="note-editor">
+                <div class="small-container">
+                    <input type="text" id="note-title" placeholder="Titulo"/>
+                    <div class="label"> Destacar </div>
+                    <input type="checkbox" id="note-highlight"/>
+                </div>
+                <textarea id="note-input" placeholder="Escribe una nota"></textarea>
+                <div class="small-container">
+                    <input type="text" id="note-signature" class="signature" placeholder="Firma (opcional)"/>
+                    <input type="button" class="button" id="submit" onclick="onSubmit()" value="Enviar"/>
+                </div>
+            </div>
+
+            <div class="hidden" class="note-viewer"  id="note-viewer">
+                <p id="element2" class="hidden">Elemento 2</p>
+                <div class="note-output" id="note-outputxxx">
+                    <span id="note-output" class="textBox"></span>
+                </div>
+            </div>
+
+            <div class="hidden" class="note-viewer"  id="highlights" alt="Elemento 3">
+                <p id="element2" class="hidden">Elemento 2</p>
+                <img  src="imgs/Pangui.png">
+                <div class="note-output" id="highlightsBox"></div>
+            </div>
+            
+        </main>
+    </div>
+
+
+</body>
+</html>
